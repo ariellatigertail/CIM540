@@ -1,5 +1,6 @@
 # Ariella Tigertail
-## Ariella Tigertail comes from a diverse background that allows for continuous growth. She enjoys volunteering with programs that benefit youth with educational and medical hardships across South Florida. Her spark of interest in the creative industry comes from wanting to help others, whether that is creating sound user experience through services and products, or simple, yet, spectacular advertisements. Ariella also enjoys immersing herself in new and unfamiliar environments through traveling alone.
+
+## Ariella Tigertail is an aspiring Art Director. She loves new an exciting projects that challenge her. She also loves creating works of art with her hands, as she is part of the Ceramic League of Miami. This allows her to find tranquility after a long week of projects. 
 
 
 ![Image](https://github.com/ariellatigertail/CIM540/blob/master/hw/biography.jpg)
