@@ -5,15 +5,13 @@ var centerY = 200;
 function setup() {
   // put setup code here
   createCanvas(400,400);
-  background(255);
+  background(200);
 }
 
 function draw() {
   // put drawing code here
 
   background(255);
-  centerX = mouseX;
-  centerY = mouseY;
   stroke (0);
   strokeWeight(1);
   fill("white");
