@@ -5,32 +5,39 @@ var centerY = 200;
 function setup() {
   // put setup code here
   createCanvas(400,400);
-  background(200);
+  background("pink");
+
 }
 
 function draw() {
   // put drawing code here
 
-  background(255);
-  stroke (0);
-  strokeWeight(1);
+  stroke(50);
+  strokeWeight(15);
   fill("white");
-  rect(centerX -150,centerY -100,100,100);
-  ellipse(centerX - 100,centerY-50,50,50);
-  rect(centerX + 25,centerY-100,100,100);
-  ellipse(centerX +75,centerY-50,50,75);
+  ellipse(centerX +200, centerY -50,100,100);
 
-  stroke(125);
-  strokeWeight(5);
-  point(centerX, centerY);
+  stroke(5);
+  strokeWeight("black");
+  fill("black");
+  ellipse(centerX +200, centerY -25,50,45);
 
-  stroke(255,0,0);
-  line(centerX -50, centerY +50, centerX +50, centerY +50);
 
-  noStroke();
-  fill(0,0,255);
-  triangle(centerX, centerY, centerX +25, centerY +25, centerX -25, centerY +25);
+  stroke(50);
+  strokeWeight(15);
+  fill("white");
+  ellipse(centerX +10, centerY -50,100,100);
 
+  stroke(5);
+  strokeWeight("black");
+  fill("black");
+  ellipse(centerX +10, centerY -25,50,45);
+
+  stroke(4);
+  strokeWeight(10);
+  line(centerX +100, centerY +100, centerX +200, centerY +100);
+
+  background(lightgray);
 
 
 }
