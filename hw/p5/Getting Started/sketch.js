@@ -17,6 +17,9 @@ function setup() {
   // put setup code here
   createCanvas(400,400);
   background("pink");
+  console.log("Hello World!");
+  console.log(number1);
+  console.log("The value of letter 2" + letter2);
 
 }
 
