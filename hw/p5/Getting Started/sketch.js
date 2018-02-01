@@ -13,9 +13,6 @@ var truthordare2 = false;
 
 
 
-
-
-
 function setup() {
   // put setup code here
   createCanvas(400,400);
@@ -52,6 +49,4 @@ function draw() {
   line(centerX +100, centerY +100, centerX +200, centerY +100);
 
   background(lightgray);
-
-
 }
