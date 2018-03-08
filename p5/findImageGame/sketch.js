@@ -1,4 +1,4 @@
-var targetPosX = [0,200,400,600,800];
+var targetPosX = [0,200,400,600];
 
 var targetPosY = [0,200];
 
@@ -18,8 +18,6 @@ function preload(){
   pics[0] = loadImage("assets/Football.png");
   pics[1] = loadImage("assets/basketball.png");
   pics[2] = loadImage("assets/soccer.png");
-  pics[3] = loadImage("assets/tennis.png");
-
 
 
 }
@@ -44,8 +42,6 @@ function draw(){
   rect(targetPosX[0], targetPosY[0], imageSize, imageSize);
   rect(targetPosX[1], targetPosY[0], imageSize, imageSize);
   rect(targetPosX[2], targetPosY[0], imageSize, imageSize);
-
-
 
   if(mouseX >= targetPosX[0] && mouseX < targetPosX[1] && mouseY >= targetPosY[0] && mouseY < targetPosY[1]){
     console.log("Box 1");
