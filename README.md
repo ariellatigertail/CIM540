@@ -1,8 +1,7 @@
-# CIM540
+# Title
 
-## Ariella Tigertail
+## Explanation
 
-This is my super awesome repo for this amazing class.
-[Visit Google.com](http://www.google.com)
+I am making this application because I personally enjoy mobile applications that can increase awareness and help improve memory; a game with a purpose. My target audience consists of anyone ages five and up.
 
-Hello, this is a test. 
+Hello, this is a test.

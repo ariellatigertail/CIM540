@@ -1,12 +1,16 @@
-var targetPosX = [0,200,400,600];
+var targetPosX = [0];
 
-var targetPosY = [0,200];
+var targetPosY = [500];
 
-var imageSize = 200;
+var imageSize = 150;
+
+var yellow
+
+var bgImage
 
 var pics = [];
 
-var outputText = "Find the soccer ball";
+var outputText = "HELLO!";
 
 var currentBox = 0;
 
@@ -15,19 +19,19 @@ var startGame;
 var sg = false;
 
 function preload(){
-  pics[0] = loadImage("assets/Football.png");
-  pics[1] = loadImage("assets/basketball.png");
-  pics[2] = loadImage("assets/soccer.png");
+  yellow = loadImage("assets/yellow.png");
+
 
 
 }
 
 function setup(){
-  createCanvas(600,400);
+  createCanvas(400,400);
+  bgImage = yellow;
   console.log("First position in targetPosX: " + targetPosX[0]);
   console.log("3rd position in targetPosX: " + targetPosX[2]);
-  startGame = createButton("Click to start!");
-  startGame.position(width/2, 300);
+  startGame = createButton("Begin");
+  startGame.position(width/ 3, 400);
   startGame.mousePressed(function(){
     sg = true;
   });
@@ -37,11 +41,28 @@ function setup(){
 function draw(){
 
   background(255);
+  image(bgImage, 0,0);
+
+
+
   if(sg == true){
-  fill(0);
-  rect(targetPosX[0], targetPosY[0], imageSize, imageSize);
-  rect(targetPosX[1], targetPosY[0], imageSize, imageSize);
-  rect(targetPosX[2], targetPosY[0], imageSize, imageSize);
+
+  fill(251,173,68);
+  rect(0,0,400,90);
+  rect(targetPosX[0], targetPosY[1], imageSize, imageSize);
+  fill(254,216,94);
+  rect(0,90,400,90);
+  rect(targetPosX[1], targetPosY[1], imageSize, imageSize);
+  fill(242,104,39);
+  rect(0,150,400,90);
+  rect(targetPosX[1], targetPosY[1], imageSize, imageSize);
+  fill(246,136,56);
+  rect(0,220,400,90);
+  rect(targetPosX[2], targetPosY[1], imageSize, imageSize);
+  fill(250,231,112);
+  rect(0,300,400,90);
+  rect(targetPosX[3], targetPosY[1], imageSize, imageSize);
+
 
   if(mouseX >= targetPosX[0] && mouseX < targetPosX[1] && mouseY >= targetPosY[0] && mouseY < targetPosY[1]){
     console.log("Box 1");
@@ -63,16 +84,17 @@ function draw(){
   }
 }
   textSize(32);
-  text(outputText, 50,250);
+  text(outputText, 100,150);
 
   if(currentBox == 3){
-    console.log("You won!!!!!");
-    outputText = "You Won!!!!"
+    console.log("You won!");
+    outputText = "You Won!"
   }else if(currentBox == 1 || currentBox == 2){
-    console.log("You lose!!!!!");
-    outputText = "You lose!!!!!"
+    console.log("You lose!");
+    outputText = "You lose!"
   }else{
-    outputText = "Find the soccer ball";
+    outputText = "HELLO";
+
   }
 
 }
