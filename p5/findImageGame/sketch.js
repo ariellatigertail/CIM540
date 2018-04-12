@@ -16,6 +16,8 @@ var currentBox = 0;
 
 var startGame;
 
+var answer = [];
+
 var sg = false;
 
 function preload(){
@@ -26,12 +28,12 @@ function preload(){
 }
 
 function setup(){
-  createCanvas(400,400);
+  createCanvas(400,500);
   bgImage = yellow;
   console.log("First position in targetPosX: " + targetPosX[0]);
   console.log("3rd position in targetPosX: " + targetPosX[2]);
-  startGame = createButton("Begin");
-  startGame.position(width/ 3, 400);
+  startGame = createButton("Start");
+  startGame.position(width/ 2.5, 420);
   startGame.mousePressed(function(){
     sg = true;
   });
@@ -48,17 +50,21 @@ function draw(){
   if(sg == true){
 
   fill(251,173,68);
-  rect(0,0,400,90);
+  rect(0,50,400,90);
   rect(targetPosX[0], targetPosY[1], imageSize, imageSize);
+
   fill(254,216,94);
   rect(0,90,400,90);
   rect(targetPosX[1], targetPosY[1], imageSize, imageSize);
+
   fill(242,104,39);
   rect(0,150,400,90);
   rect(targetPosX[1], targetPosY[1], imageSize, imageSize);
+
   fill(246,136,56);
   rect(0,220,400,90);
   rect(targetPosX[2], targetPosY[1], imageSize, imageSize);
+
   fill(250,231,112);
   rect(0,300,400,90);
   rect(targetPosX[3], targetPosY[1], imageSize, imageSize);
@@ -83,8 +89,13 @@ function draw(){
     currentBox = 3;
   }
 }
-  textSize(32);
-  text(outputText, 100,150);
+  textSize(20);
+  fill("white");
+  textFont('Georgia');
+
+
+
+  text(outputText, 70,350);
 
   if(currentBox == 3){
     console.log("You won!");
@@ -93,7 +104,7 @@ function draw(){
     console.log("You lose!");
     outputText = "You lose!"
   }else{
-    outputText = "HELLO";
+    outputText = "Re-arrange from light to dark!";
 
   }
 
