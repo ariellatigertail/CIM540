@@ -11,9 +11,9 @@ function preload(){
   pics [0] = loadImage("assets/Football.png");
   pics [1] = loadImage("assets/basketball.png");
   pics [2] = loadImage("assets/soccer.png");
-  pics [3] = loadImage("assets/planet.jpg");
-  pics [4] = loadImage("assets/sun.jpg");
-  pics [5] = loadImage("assets/moon.jpg");
+  pics [3] = loadImage("assets/flamingo.jpg");
+  pics [4] = loadImage("assets/monkey.jpg");
+  pics [5] = loadImage("assets/giraffe.jpg");
 
 }
 
