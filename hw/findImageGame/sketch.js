@@ -67,12 +67,12 @@ function draw(){
     currentBox = 3;
   }
   if(mouseX >= targetPosX[3] && mouseX < targetPosX[4] && mouseY >= targetPosY[0] && mouseY < targetPosY[1]){
-    console.log("Box 3");
+    console.log("Box 4");
     image(pics[4], targetPosX[3], targetPosY[0]);
     currentBox = 4;
   }
   if(mouseX >= targetPosX[4] && mouseX < targetPosX[5] && mouseY >= targetPosY[0] && mouseY < targetPosY[1]){
-    console.log("Box 3");
+    console.log("Box 5");
     image(pics[4], targetPosX[4], targetPosY[0]);
     currentBox = 5;
   }
