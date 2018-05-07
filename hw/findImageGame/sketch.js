@@ -18,9 +18,9 @@ function preload(){
   pics[0] = loadImage("assets/Football.png");
   pics[1] = loadImage("assets/basketball.png");
   pics[2] = loadImage("assets/soccer.png");
-  pics[3] = loadImage("assets/baseballbat.jpg");
-  pics[4] = loadImage("assets/giraffe.jpeg");
-  pics[5] = loadImage("assets/flamingo.jpg");
+  pics[3] = loadImage("assets/giraffe.jpg");
+  pics[4] = loadImage("assets/flamingo.jpg");
+
 
 
 }
@@ -45,6 +45,8 @@ function draw(){
   rect(targetPosX[0], targetPosY[0], imageSize, imageSize);
   rect(targetPosX[1], targetPosY[0], imageSize, imageSize);
   rect(targetPosX[2], targetPosY[0], imageSize, imageSize);
+  rect(targetPosX[3], targetPosY[0], imageSize, imageSize);
+  rect(targetPosX[4], targetPosY[0], imageSize, imageSize);
 
   if(mouseX >= targetPosX[0] && mouseX < targetPosX[1] && mouseY >= targetPosY[0] && mouseY < targetPosY[1]){
     console.log("Box 1");
@@ -61,8 +63,18 @@ function draw(){
 
   if(mouseX >= targetPosX[2] && mouseX < targetPosX[3] && mouseY >= targetPosY[0] && mouseY < targetPosY[1]){
     console.log("Box 3");
-    image(pics[5], targetPosX[2], targetPosY[0]);
+    image(pics[4], targetPosX[2], targetPosY[0]);
     currentBox = 3;
+  }
+  if(mouseX >= targetPosX[3] && mouseX < targetPosX[4] && mouseY >= targetPosY[0] && mouseY < targetPosY[1]){
+    console.log("Box 3");
+    image(pics[4], targetPosX[3], targetPosY[0]);
+    currentBox = 4;
+  }
+  if(mouseX >= targetPosX[4] && mouseX < targetPosX[5] && mouseY >= targetPosY[0] && mouseY < targetPosY[1]){
+    console.log("Box 3");
+    image(pics[4], targetPosX[4], targetPosY[0]);
+    currentBox = 5;
   }
 }
   textSize(32);
