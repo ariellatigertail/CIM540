@@ -1,137 +1,115 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<style>
-canvas {
-    border:1px solid #d3d3d3;
-    background-color: #f1f1f1;
-}
-</style>
-</head>
-<body onload="startGame()">
-<script>
+var centerX = 0;
+var centerY = 0;
 
-var myGamePiece;
-var myObstacles = [];
-var myScore;
+var bgChange, bgChange1, hitImage;
 
-function startGame() {
-    myGamePiece = new component(30, 30, "red", 10, 120);
-    myGamePiece.gravity = 0.05;
-    myScore = new component("30px", "Consolas", "black", 280, 40, "text");
-    myGameArea.start();
-}
+var bgImage, bgImage2, currentBgImage;
 
-var myGameArea = {
-    canvas : document.createElement("canvas"),
-    start : function() {
-        this.canvas.width = 480;
-        this.canvas.height = 270;
-        this.context = this.canvas.getContext("2d");
-        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-        this.frameNo = 0;
-        this.interval = setInterval(updateGameArea, 20);
-        },
-    clear : function() {
-        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    }
+var hitZoneX = 100;
+var hitZoneY = 100;
+
+var changeColor = false;
+
+var randomColor = [255, 255, 255];
+
+var showHide = true;
+
+var showHideButton;
+
+
+function preload() {
+    bgImage = loadImage("assets/saturn.jpg");
+    bgImage2 = loadImage("assets/mars.jpg");
+    hitImage = loadImage("assets/rocket.jpg");
 }
 
-function component(width, height, color, x, y, type) {
-    this.type = type;
-    this.score = 0;
-    this.width = width;
-    this.height = height;
-    this.speedX = 0;
-    this.speedY = 0;
-    this.x = x;
-    this.y = y;
-    this.gravity = 0;
-    this.gravitySpeed = 0;
-    this.update = function() {
-        ctx = myGameArea.context;
-        if (this.type == "text") {
-            ctx.font = this.width + " " + this.height;
-            ctx.fillStyle = color;
-            ctx.fillText(this.text, this.x, this.y);
-        } else {
-            ctx.fillStyle = color;
-            ctx.fillRect(this.x, this.y, this.width, this.height);
-        }
-    }
-    this.newPos = function() {
-        this.gravitySpeed += this.gravity;
-        this.x += this.speedX;
-        this.y += this.speedY + this.gravitySpeed;
-        this.hitBottom();
-    }
-    this.hitBottom = function() {
-        var rockbottom = myGameArea.canvas.height - this.height;
-        if (this.y > rockbottom) {
-            this.y = rockbottom;
-            this.gravitySpeed = 0;
-        }
-    }
-    this.crashWith = function(otherobj) {
-        var myleft = this.x;
-        var myright = this.x + (this.width);
-        var mytop = this.y;
-        var mybottom = this.y + (this.height);
-        var otherleft = otherobj.x;
-        var otherright = otherobj.x + (otherobj.width);
-        var othertop = otherobj.y;
-        var otherbottom = otherobj.y + (otherobj.height);
-        var crash = true;
-        if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
-            crash = false;
-        }
-        return crash;
-    }
+function setup() {
+    createCanvas(500, 500);
+    centerX = width / 2;
+    centerY = height / 2;
+
+    bgChange = createButton('SATURN');
+    bgChange.position(10, 500);
+    bgChange.mousePressed(bgFunction);
+
+    bgChange1 = createButton('MARS');
+    bgChange1.position(100, 500);
+    bgChange1.mousePressed(bgFunction1);
+
+    showHideButton = createButton('show hide');
+    showHideButton.position(200, 500);
+    showHideButton.mousePressed(showHideFunction);
+
+    currentBgImage = bgImage;
 }
 
-function updateGameArea() {
-    var x, height, gap, minHeight, maxHeight, minGap, maxGap;
-    for (i = 0; i < myObstacles.length; i += 1) {
-        if (myGamePiece.crashWith(myObstacles[i])) {
-            return;
-        }
+function draw() {
+    image(currentBgImage, 0, 0);
+
+    if (changeColor == true) {
+        randomColor[0] = random(256);
+        randomColor[1] = random(256);
+        randomColor[2] = random(256);
+        changeColor = false;
+
     }
-    myGameArea.clear();
-    myGameArea.frameNo += 1;
-    if (myGameArea.frameNo == 1 || everyinterval(150)) {
-        x = myGameArea.canvas.width;
-        minHeight = 20;
-        maxHeight = 200;
-        height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
-        minGap = 50;
-        maxGap = 200;
-        gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
-        myObstacles.push(new component(10, height, "green", x, 0));
-        myObstacles.push(new component(10, x - height - gap, "green", x, height + gap));
+
+
+    if (showHide == true) {
+        fill(randomColor[0], randomColor[1], randomColor[2]);
+
+        strokeWeight(1);
+        //face
+        ellipse(centerX, centerY, 100, 100);
+        //nose
+        ellipse(centerX, centerY + 10, 20, 20);
+        //eyse
+        ellipse(centerX - 10, centerY - 10, 10, 20);
+        ellipse(centerX + 10, centerY - 10, 10, 20);
+        rectMode(CENTER);
+        rect(centerX, centerY + 30, 50, 15, 5);
+        rect(centerX, centerY + 30, 50, 1, 1);
+
+        noFill();
+        strokeWeight(4);
+        arc(centerX, centerY, 100, 100, 0, PI);
+        strokeWeight(30);
+        arc(centerX, centerY, 100, 100, PI, TWO_PI);
     }
-    for (i = 0; i < myObstacles.length; i += 1) {
-        myObstacles[i].x += -1;
-        myObstacles[i].update();
+
+    strokeWeight(1);
+
+    ellipse(hitZoneX, hitZoneY, 10, 10);
+    var hitZoneDist = dist(mouseX, mouseY, hitZoneX, hitZoneY);
+
+    //console.log(hitZoneDist);
+
+    if (hitZoneDist < 10) {
+        image(hitImage, hitZoneX - 100, hitZoneY - 100);
+
     }
-    myScore.text="SCORE: " + myGameArea.frameNo;
-    myScore.update();
-    myGamePiece.newPos();
-    myGamePiece.update();
+
+    ellipse(325, 325, 10, 10);
+    if (mouseX > 300 && mouseX < 350 && mouseY > 300 && mouseY < 350) {
+        changeColor = true;
+    } else {
+        changeColor = false;
+    }
+
 }
 
-function everyinterval(n) {
-    if ((myGameArea.frameNo / n) % 1 == 0) {return true;}
-    return false;
+function bgFunction() {
+    currentBgImage = bgImage;
 }
 
-function accelerate(n) {
-    myGamePiece.gravity = n;
+function bgFunction1() {
+    currentBgImage = bgImage2;
 }
-</script>
-<br>
-<button onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button>
-<p>Use the ACCELERATE button to stay in the air</p>
-<p>How long can you stay alive?</p>
-</body>
-</html>
+
+function showHideFunction() {
+    if (showHide == true) {
+        showHide = false;
+    } else {
+        showHide = true;
+    }
+}
