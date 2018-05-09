@@ -18,9 +18,9 @@ var showHideButton;
 
 
 function preload() {
-    bgImage = loadImage("assets/carnival.jpg");
-    bgImage2 = loadImage("assets/party.jpg");
-    hitImage = loadImage("assets/ballons.png");
+    bgImage = loadImage("assets/saturn.jpg");
+    bgImage2 = loadImage("assets/mars.jpg");
+    hitImage = loadImage("assets/rocket.jpg");
 }
 
 function setup() {
@@ -28,11 +28,11 @@ function setup() {
     centerX = width / 2;
     centerY = height / 2;
 
-    bgChange = createButton('carnival');
+    bgChange = createButton('SATURN');
     bgChange.position(10, 500);
     bgChange.mousePressed(bgFunction);
 
-    bgChange1 = createButton('party');
+    bgChange1 = createButton('MARS');
     bgChange1.position(100, 500);
     bgChange1.mousePressed(bgFunction1);
 
